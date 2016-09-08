@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import sys
 
 if len(sys.argv) != 2:
-    print("USAGE: %s field")
+    print("USAGE: %s field" % sys.argv[0])
     exit(1)
 field = sys.argv[1]
 
