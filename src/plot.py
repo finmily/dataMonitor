@@ -20,6 +20,7 @@ data_list = np.array([one[1][field] for one in datas.items()])
 
 N = len(time_list)
 
+
 def format_date(x, pos=None):
     if not x % 1:
         thisind = np.clip(int(x), 0, N - 1)
@@ -32,12 +33,16 @@ ind = np.arange(N)
 ind1 = np.arange(N + 3)
 
 fig = plt.figure()
+plt.xlabel("Time")
+plt.ylabel("Num")
+plt.title("PLOT")
 ax = fig.add_subplot(111)
-ax.plot(ind, data_list, 'o-', label='all')
+ax.plot(ind, data_list, 'o-', label=str(field))
 ax.plot(ind1, ind1, '-', color='white')
 datadotxy = tuple(zip(ind, data_list + 1))
 for dotxy in datadotxy:
     ax.annotate(str(int(dotxy[1] - 1)), xy=dotxy)
 ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
 fig.autofmt_xdate()
+plt.legend()
 plt.show()
