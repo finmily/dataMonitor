@@ -9,14 +9,14 @@ if len(sys.argv) != 2:
 field = sys.argv[1]
 
 pkl_file = open('data.pkl', 'r')
-datas = {}
+datas = []
 for line in pkl_file:
     timestamp = line.split('\t')[0]
     data = json.loads(line.split('\t')[1])
-    datas[timestamp] = data
+    datas.append((timestamp, data))
 
-time_list = [one[0] for one in datas.items()]
-data_list = np.array([one[1][field] for one in datas.items()])
+time_list = [one[0] for one in datas]
+data_list = np.array([one[1][field] for one in datas])
 
 N = len(time_list)
 
